@@ -141,7 +141,8 @@ const Layout = ({ children }) => {
           content="react, next, nextjs, html, css, javascript, js, modern-ui, modern-ux, portfolio, framer-motion, 3d-website, particle-effect"
         />
         <meta name="author" content="Bhavya Wade" />
-        <link rel="icon" href="/bhavya.png" type="image/png" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
         <meta name="theme-color" content="#000000" />
         <meta
           name="viewport"
