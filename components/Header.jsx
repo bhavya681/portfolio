@@ -1,22 +1,21 @@
-import Image from "next/image";
 import Link from "next/link";
 
-import Socials from "../components/Socials";
+import Socials from "./Socials";
 
 const Header = () => {
   return (
-    <header className="absolute z-30 w-full items-center px-16 xl-px-0 xl:h-[90px]">
-      <div className="container mx-auto">
-        <div className="flex flex-col lg:flex-row justify-between items-center gap-y-6 py-8">
-          {/* logo */}
-          <Link href="/">
-            <h1 className="text-3xl font-bold font-sora tracking-wide">
-              Bhavya <span className="text-accent font-light">Wade.</span>
+    <header className="absolute z-30 w-full items-center px-4 pt-[max(0.75rem,env(safe-area-inset-top,0px))] sm:px-8 lg:px-12 xl:px-0 xl:h-[88px] xl:pt-0">
+      <div className="container max-w-7xl">
+        <div className="flex flex-col items-center gap-5 py-5 sm:gap-6 sm:py-7 lg:flex-row lg:items-center lg:justify-between lg:gap-y-0 lg:py-8">
+          <Link href="/" className="shrink-0">
+            <h1 className="text-center text-2xl font-bold font-sora tracking-wide text-white sm:text-3xl lg:text-left">
+              Bhavya <span className="font-semibold text-accent">Wade.</span>
             </h1>
           </Link>
 
-          {/* socials */}
-          <Socials />
+          <div className="flex w-full items-center justify-center lg:w-auto lg:justify-end">
+            <Socials variant="header" />
+          </div>
         </div>
       </div>
     </header>

@@ -7,18 +7,18 @@ const ProjectsBtn = () => {
   return (
     <div className="mx-auto xl:mx-0">
       <Link
-        href="/work"
-        className="relative w-[185px] h-[185px] flex justify-center items-center bg-circleStar bg-cover bg-center bg-no-repeat group"
+        href="/projects"
+        className="group relative flex h-[148px] w-[148px] items-center justify-center bg-circleStar bg-cover bg-center bg-no-repeat sm:h-[168px] sm:w-[168px] md:h-[185px] md:w-[185px]"
       >
         <Image
           src="/rounded-text.png"
-          alt="rounded text"
+          alt=""
           width={141}
           height={148}
-          className="animate-spin-slow w-full h-full max-w-[141px] max-h-[148px] pointer-events-none select-none"
+          className="pointer-events-none h-full max-h-[118px] w-full max-w-[112px] animate-spin-slow select-none sm:max-h-[132px] sm:max-w-[126px] md:max-h-[148px] md:max-w-[141px]"
         />
         <HiArrowRight
-          className="absolute text-4xl group-hover:translate-x-2 transition-all duration-300"
+          className="absolute text-3xl text-white transition-all duration-300 group-hover:translate-x-2 md:text-4xl"
           aria-hidden
         />
       </Link>

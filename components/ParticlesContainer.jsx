@@ -2,7 +2,9 @@ import { useCallback } from "react";
 import { Particles } from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
-const ParticlesContainer = () => {
+const ParticlesContainer = ({ variant = "default" }) => {
+  const isHome = variant === "home";
+
   // init
   const particlesInit = useCallback(async (engine) => {
     await loadFull(engine);
@@ -12,15 +14,15 @@ const ParticlesContainer = () => {
 
   return (
     <Particles
-      className="w-full h-full absolute translate-z-0"
-      id="tsparticles"
+      className="absolute h-full w-full translate-z-0"
+      id={isHome ? "tsparticles-home" : "tsparticles"}
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
         fullScreen: { enable: false },
         background: {
           color: {
-            value: "",
+            value: "#000000",
           },
         },
         fpsLimit: 120,
@@ -31,7 +33,7 @@ const ParticlesContainer = () => {
               mode: "push",
             },
             onHover: {
-              enable: true,
+              enable: !isHome,
               mode: "repulse",
             },
             resize: true,
@@ -42,19 +44,19 @@ const ParticlesContainer = () => {
             },
             repulse: {
               distance: 200,
-              duration: 0.4,
+              duration: 0.65,
             },
           },
         },
         particles: {
           color: {
-            value: "#e68e2e",
+            value: "#fbbf24",
           },
           links: {
-            color: "#f5d393",
-            distance: 150,
+            color: "#f59e0b",
+            distance: isHome ? 125 : 150,
             enable: true,
-            opacity: 0.5,
+            opacity: isHome ? 0.36 : 0.28,
             width: 1,
           },
           collisions: {
@@ -73,12 +75,12 @@ const ParticlesContainer = () => {
           number: {
             density: {
               enable: true,
-              area: 800,
+              area: isHome ? 650 : 800,
             },
-            value: 80,
+            value: isHome ? 95 : 80,
           },
           opacity: {
-            value: 0.5,
+            value: isHome ? 0.42 : 0.45,
           },
           shape: {
             type: "circle",

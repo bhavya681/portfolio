@@ -25,25 +25,45 @@ const Contact = () => {
   };
 
   return (
-    <div className="h-full bg-primary/30">
-      <div className="container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full">
+    <div className="min-h-full bg-primary/30">
+      <div className="container flex min-h-full items-center justify-center px-4 py-20 text-center sm:px-6 sm:py-28 md:py-32 xl:text-left">
         {/* text & form */}
         <div className="flex flex-col w-full max-w-[700px]">
           {/* text */}
           <motion.h2
             variants={fadeIn("up", 0.2)}
-            initial="hidden"
+            initial={false}
             animate="show"
             exit="hidden"
-            className="h2 text-center mb-12"
+            className="h2 text-center mb-8"
           >
             Let's <span className="text-accent">connect.</span>
           </motion.h2>
 
+          <motion.p
+            variants={fadeIn("up", 0.25)}
+            initial={false}
+            animate="show"
+            exit="hidden"
+            className="text-center mb-8 text-sm sm:text-base"
+          >
+            <a
+              href="mailto:bhavyawade2@gmail.com"
+              className="text-white/80 hover:text-accent transition-colors underline-offset-4 hover:underline"
+            >
+              bhavyawade2@gmail.com
+            </a>
+            <span className="text-white/40 mx-2 hidden sm:inline">·</span>
+            <br className="sm:hidden" />
+            <span className="text-white/70">779880904</span>
+            <span className="text-white/40 mx-2">·</span>
+            Palghar, Maharashtra, India
+          </motion.p>
+
           {/* form */}
           <motion.form
             variants={fadeIn("up", 0.4)}
-            initial="hidden"
+            initial={false}
             animate="show"
             exit="hidden"
             className="flex-1 flex flex-col gap-6 w-full mx-auto"
@@ -54,7 +74,7 @@ const Contact = () => {
             data-netlify="true"
           >
             {/* input group */}
-            <div className="flex gap-x-6 w-full">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-x-6 w-full">
               <input
                 type="text"
                 name="name"
@@ -97,7 +117,7 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="btn rounded-full border border-white/50 max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group"
+              className="btn group mx-auto flex w-full max-w-none items-center justify-center overflow-hidden rounded-full border border-white/50 px-8 transition-all duration-300 hover:border-accent sm:max-w-[200px] md:max-w-[220px] xl:mx-0"
               disabled={isLoading}
               aria-disabled={isLoading}
             >

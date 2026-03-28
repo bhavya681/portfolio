@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="ha" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1e1b4b"/>
+      <stop offset="0.5" stop-color="#312e81"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="hb" x1="0.5" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.5"/>
+    </linearGradient>
+    <radialGradient id="hm" cx="0.35" cy="0.35" r="0.5">
+      <stop offset="0" stop-color="#fef3c7" stop-opacity="0.9"/>
+      <stop offset="0.7" stop-color="#c4b5fd" stop-opacity="0.15"/>
+      <stop offset="1" stop-color="#312e81" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#ha)"/>
+  <rect width="800" height="500" fill="url(#hb)"/>
+  <circle cx="280" cy="220" r="72" fill="url(#hm)"/>
+  <circle cx="280" cy="220" r="78" stroke="#a78bfa" stroke-opacity="0.35" stroke-width="1.5" fill="none"/>
+  <path d="M520 160l4 12h12l-10 8 4 12-10-8-10 8 4-12-10-8h12z" fill="#f13024" fill-opacity="0.55"/>
+  <path d="M620 280l3 9h9l-7 6 3 9-8-6-8 6 3-9-7-6h9z" fill="#c4b5fd" fill-opacity="0.45"/>
+  <path d="M480 320l2.5 7.5h7.5l-6 5 2.5 7.5-6.5-5-6.5 5 2.5-7.5-6-5h7.5z" fill="#f13024" fill-opacity="0.35"/>
+  <path d="M580 380l2 6h6l-5 4 2 6-5-4-5 4 2-6-5-4h6z" fill="#a78bfa" fill-opacity="0.4"/>
+  <ellipse cx="520" cy="200" rx="120" ry="36" stroke="#f13024" stroke-opacity="0.2" stroke-width="1" fill="none" transform="rotate(-18 520 200)"/>
+</svg>

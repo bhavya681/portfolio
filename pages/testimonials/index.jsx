@@ -1,34 +1,19 @@
-import { motion } from "framer-motion";
+/**
+ * Testimonials route is disabled for now. Restore by:
+ * - Uncommenting the block below and removing the placeholder export
+ * - Re-adding the testimonials item in components/Nav.jsx (see comment there)
+ * - Uncommenting the /testimonials redirect in next.config.js if you use it
+ *
+ * import { motion } from "framer-motion";
+ * import { fadeIn } from "../../variants";
+ * const Testimonials = () => (
+ *   <div className="relative min-h-full overflow-x-hidden overflow-y-auto bg-[#060606] px-4 py-24 sm:px-6 sm:py-28 md:py-32">
+ *     ...
+ *   </div>
+ * );
+ * export default Testimonials;
+ */
 
-import TestimonialSlider from "../../components/TestimonialSlider";
-import { fadeIn } from "../../variants";
-
-const Testimonials = () => {
-  return (
-    <div className="h-full bg-primary/30 py-32 text-center">
-      <div className="container mx-auto h-full flex flex-col justify-center">
-        <motion.h2
-          variants={fadeIn("up", 0.2)}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-          className="h2 mb-8 xl:mb-0"
-        >
-          What clients <span className="text-accent">say.</span>
-        </motion.h2>
-
-        {/* slider */}
-        <motion.div
-          variants={fadeIn("up", 0.4)}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-        >
-          <TestimonialSlider />
-        </motion.div>
-      </div>
-    </div>
-  );
-};
+const Testimonials = () => null;
 
 export default Testimonials;

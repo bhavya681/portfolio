@@ -1,74 +1,89 @@
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 
-// icons
 import {
   HiHome,
   HiUser,
-  HiViewColumns,
-  HiRectangleGroup,
-  HiChatBubbleBottomCenterText,
-  HiEnvelope,
+  HiSquares2X2,
+  HiDocumentText,
   HiBriefcase,
+  HiEnvelope,
 } from "react-icons/hi2";
 
-// nav data
+/** Match routes including hash aliases */
+export function navPathMatches(linkPath, pathname, asPath = "") {
+  if (linkPath === "/about#education") {
+    return pathname === "/about" && asPath.includes("#education");
+  }
+  if (linkPath === "/about") {
+    return pathname === "/about" && !asPath.includes("#education");
+  }
+  if (linkPath === pathname) return true;
+  if (linkPath === "/skills" && pathname === "/skill") return true;
+  return false;
+}
+
+export function getActiveNavIndex(pathname, asPath, data) {
+  const idx = data.findIndex((item) =>
+    navPathMatches(item.path, pathname, asPath),
+  );
+  return idx >= 0 ? idx : 0;
+}
+
+/** Reference order: Home, About, Skills, Education, Portfolio, [Testimonials], Contact */
 export const navData = [
   { name: "home", path: "/", Icon: HiHome },
   { name: "about", path: "/about", Icon: HiUser },
-  { name: "services", path: "/services", Icon: HiRectangleGroup },
-  { name: "work", path: "/work", Icon: HiViewColumns },
+  { name: "skills", path: "/skills", Icon: HiSquares2X2 },
+  { name: "education", path: "/about#education", Icon: HiDocumentText },
   { name: "projects", path: "/projects", Icon: HiBriefcase },
-  {
-    name: "testimonials",
-    path: "/testimonials",
-    Icon: HiChatBubbleBottomCenterText,
-  },
-  {
-    name: "contact",
-    path: "/contact",
-    Icon: HiEnvelope,
-  },
+  // { name: "testimonials", path: "/testimonials", Icon: HiChatBubbleLeftRight },
+  { name: "contact", path: "/contact", Icon: HiEnvelope },
 ];
 
 const Nav = () => {
-  const pathname = usePathname();
+  const router = useRouter();
+  const { pathname, asPath } = router;
 
   return (
-    <nav className="flex flex-col items-center xl:justify-center gap-y-4 fixed h-max bottom-0 mt-auto xl:right-[2%] z-50 top-0 w-full xl:w-16 xl:max-w-md xl:h-screen">
-      <div className="flex w-full xl:flex-col items-center justify-between xl:justify-center gap-y-10 px-4 md:px-40 xl:px-0 h-[80px] xl:h-max py-8 bg-white/10 backdrop-blur-sm text-3xl xl:text-xl xl:rounded-full">
-        {navData.map((link, i) => (
-          <Link
-            className={`${
-              link.path === pathname && "text-accent"
-            } relative flex items-center group hover:text-accent transition-all duration-300`}
-            href={link.path}
-            key={i}
-          >
-            {/* tolltip */}
-            <div
-              role="tooltip"
-              className="absolute pr-14 right-0 hidden xl:group-hover:flex"
+    <nav
+      aria-label="Primary"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center xl:inset-x-auto xl:bottom-auto xl:left-auto xl:right-[1.25%] xl:top-0 xl:h-screen xl:w-[3.75rem] xl:max-w-none xl:items-center 2xl:right-[1.75%]"
+    >
+      <div
+        className="pointer-events-auto flex h-[4.25rem] w-full max-w-none items-center justify-evenly gap-0 border-t border-white/[0.12] bg-[#0a0a12]/75 px-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-2 shadow-[0_-16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:h-[4.5rem] sm:px-3 md:px-8 xl:h-auto xl:w-full xl:flex-col xl:justify-center xl:gap-7 xl:rounded-full xl:border xl:border-white/[0.12] xl:bg-[#080810]/80 xl:px-2 xl:py-11 xl:shadow-[0_12px_48px_rgba(0,0,0,0.75)] xl:backdrop-blur-2xl"
+      >
+        {navData.map((link) => {
+          const active = navPathMatches(link.path, pathname, asPath);
+          return (
+            <Link
+              key={`${link.path}-${link.name}`}
+              href={link.path}
+              className={`group relative flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl text-[1.2rem] transition-colors duration-200 ease-out sm:text-[1.3rem] xl:text-[1.22rem] ${
+                active
+                  ? "text-accent drop-shadow-[0_0_14px_rgba(241,48,36,0.75)]"
+                  : "text-white/90 hover:text-accent"
+              } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-95`}
+              aria-current={active ? "page" : undefined}
             >
-              <div className="bg-white relative flex text-primary items-center p-[6px] rounded-[3px]">
-                <div className="text-[12px] leading-none font-semibold capitalize">
+              <span
+                role="tooltip"
+                className="pointer-events-none absolute right-full z-10 mr-2 hidden pr-1 xl:group-hover:flex"
+              >
+                <span className="relative flex items-center rounded bg-white px-2.5 py-1.5 text-[11px] font-semibold capitalize leading-none text-[#05050a] shadow-lg">
                   {link.name}
-                </div>
+                  <span
+                    className="absolute -right-1.5 top-1/2 -translate-y-1/2 border-y-[6px] border-l-8 border-r-0 border-solid border-y-transparent border-l-white"
+                    aria-hidden
+                  />
+                </span>
+              </span>
 
-                {/* triangle */}
-                <div
-                  className="border-solid border-l-white border-l-8 border-y-transparent border-y-[6px] border-r-0 absolute -right-2"
-                  aria-hidden
-                />
-              </div>
-            </div>
-
-            {/* icon */}
-            <div>
-              <link.Icon aria-hidden />
-            </div>
-          </Link>
-        ))}
+              <link.Icon aria-hidden className="drop-shadow-sm" />
+              <span className="sr-only">{link.name}</span>
+            </Link>
+          );
+        })}
       </div>
     </nav>
   );

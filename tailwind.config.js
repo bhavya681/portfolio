@@ -10,8 +10,12 @@ module.exports = {
   ],
   theme: {
     container: {
+      center: true,
       padding: {
-        DEFAULT: "15px",
+        DEFAULT: "1rem",
+        sm: "1.25rem",
+        md: "1.5rem",
+        lg: "2rem",
       },
     },
     screens: {
@@ -22,8 +26,8 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#131424",
-        secondary: "#393A47",
+        primary: "#0a0a0a",
+        secondary: "#000000",
         accent: "#F13024",
       },
       backgroundImage: {
@@ -39,11 +43,6 @@ module.exports = {
         poppins: [`var(--font-poppins)`, "sans-serif"],
         sora: [`var(--font-sora)`, "sans-serif"],
       },
-    },
-  },
-  container: {
-    padding: {
-      DEFAULT: "15px",
     },
   },
   plugins: [require("tailwind-scrollbar")],

@@ -1,173 +1,113 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
-import CountUp from "react-countup";
-import {
-  FaCss3,
-  FaHtml5,
-  FaJs,
-  FaReact,
-  FaNodeJs,
-} from "react-icons/fa";
-import {
-  SiNextdotjs,
-  SiTailwindcss,
-  SiMongodb,
-  SiDocker,
-  SiRedis,
-} from "react-icons/si";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 import Avatar from "../../components/Avatar";
 import Circles from "../../components/Circles";
+import EducationTimeline from "../../components/EducationTimeline";
 import { fadeIn } from "../../variants";
 
-//  data
-export const aboutData = [
-  {
-    title: "skills",
-    info: [
-      {
-        title: "Frontend Development",
-        icons: [
-          FaHtml5,
-          FaCss3,
-          FaJs,
-          FaReact,
-          SiNextdotjs,
-          SiTailwindcss,
-        ],
-      },
-      {
-        title: "Backend & Tools",
-        icons: [FaNodeJs, SiMongodb, SiRedis, SiDocker],
-      },
-    ],
-  },
-  {
-    title: "experience",
-    info: [
-      {
-        title: "Software Developer",
-        stage: "2021 - Present",
-      },
-    ],
-  },
-];
-
 const About = () => {
-  const [index, setIndex] = useState(0);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.isReady) return;
+    if (router.asPath.includes("#education")) {
+      const el = document.getElementById("education");
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [router.isReady, router.asPath]);
 
   return (
-    <div className="h-full bg-primary/30 py-32 text-center xl:text-left">
+    <div className="relative min-h-full overflow-x-hidden overflow-y-auto bg-[#060606] py-20 text-center sm:py-24 md:py-28 xl:py-36 xl:text-left">
+      {/* Quiet depth — single mesh, low contrast */}
+      <div
+        className="pointer-events-none absolute inset-0 mesh-page opacity-[0.22] mix-blend-screen"
+        aria-hidden
+      />
+      <div
+        className="pointer-events-none absolute right-0 top-1/4 h-[320px] w-[320px] -translate-y-1/2 rounded-full bg-accent/[0.07] blur-[120px] sm:right-[5%]"
+        aria-hidden
+      />
+
       <Circles />
 
-      {/* avatar img */}
       <motion.div
         variants={fadeIn("right", 0.2)}
         initial="hidden"
         animate="show"
         exit="hidden"
-        className="hidden xl:flex absolute bottom-0 -left-[370px]"
+        className="absolute bottom-0 -left-[370px] hidden xl:flex"
       >
         <Avatar />
       </motion.div>
 
-      <div className="container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6">
-        {/* text */}
-        <div className="flex-1 flex flex-col justify-center">
-          <motion.h2
-            variants={fadeIn("right", 0.2)}
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            className="h2"
+      <div className="container relative z-10 flex flex-col gap-14 px-4 sm:gap-16 sm:px-6 lg:gap-20 xl:flex-row xl:items-start xl:justify-between xl:gap-24">
+        {/* Intro — simple column + accent rail */}
+        <div className="relative flex w-full max-w-xl flex-1 flex-col xl:max-w-[min(100%,26rem)]">
+          <span
+            className="mb-3 inline-block text-[10px] font-semibold uppercase tracking-[0.35em] text-accent/85"
+            aria-hidden
           >
-            Developing <span className="text-accent">innovative</span> solutions for the web.
-          </motion.h2>
-          <motion.p
-            variants={fadeIn("right", 0.4)}
-            initial="hidden"
-            animate="show"
-            className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0"
-          >
-            I am a passionate developer with expertise in creating user-friendly web applications. Whether you're looking for a responsive website or a complex full-stack application, I'm here to help bring your vision to life.
-          </motion.p>
-
-          {/* counters */}
-          <motion.div
-            variants={fadeIn("right", 0.6)}
-            initial="hidden"
-            animate="show"
-            className="hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8"
-          >
-            <div className="flex flex-1 xl:gap-x-6">
-              {/* experience */}
-              <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={3} duration={5} /> +
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Years of experience.
-                </div>
-              </div>
-
-              {/* projects */}
-              <div className="relative flex-1">
-                <div className="text-2xl xl:text-4xl font-extrabold text-accent mb-2">
-                  <CountUp start={0} end={70} duration={5} /> +
-                </div>
-                <div className="text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]">
-                  Finished projects.
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            About
+          </span>
+          <div className="relative pl-5 sm:pl-6">
+            <div
+              className="absolute bottom-1 left-0 top-1 w-px bg-gradient-to-b from-accent/80 via-accent/25 to-transparent"
+              aria-hidden
+            />
+            <motion.h2
+              variants={fadeIn("right", 0.2)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="h2 mt-0 text-balance sm:mt-1"
+            >
+              Building{" "}
+              <span className="text-accent">modern solutions</span> for the
+              digital world.
+            </motion.h2>
+            <motion.p
+              variants={fadeIn("right", 0.32)}
+              initial="hidden"
+              animate="show"
+              exit="hidden"
+              className="mx-auto mt-5 max-w-prose text-[15px] leading-[1.75] text-white/65 xl:mx-0"
+            >
+              I am a driven and versatile developer with a passion for technology
+              and problem-solving. I focus on secure, scalable, and user-friendly
+              applications, continuous learning, and collaboration.
+            </motion.p>
+            <motion.div
+              variants={fadeIn("right", 0.42)}
+              initial="hidden"
+              animate="show"
+              className="mt-8"
+            >
+              <Link
+                href="/skills"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-white/90 transition hover:border-accent/35 hover:text-accent"
+              >
+                Full technology stack
+                <span aria-hidden className="text-accent">
+                  →
+                </span>
+              </Link>
+            </motion.div>
+          </div>
         </div>
 
-        {/* info */}
+        {/* Education — single refined block */}
         <motion.div
-          variants={fadeIn("left", 0.4)}
+          id="education"
+          variants={fadeIn("left", 0.3)}
           initial="hidden"
           animate="show"
           exit="hidden"
-          className="flex flex-col w-full xl:max-w-[48%] h-[480px]"
+          className="relative w-full max-w-xl flex-1 scroll-mt-28 xl:max-w-[min(100%,34rem)]"
         >
-          <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
-            {aboutData.map((item, itemI) => (
-              <div
-                key={itemI}
-                className={`${
-                  index === itemI &&
-                  "text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300"
-                } cursor-pointer capitalize xl:text-lg relative after:w-8 after:h-[2px] after:bg-white after:absolute after:-bottom-1 after:left-0`}
-                onClick={() => setIndex(itemI)}
-              >
-                {item.title}
-              </div>
-            ))}
-          </div>
-
-          <div className="py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start">
-            {aboutData[index].info.map((item, itemI) => (
-              <div
-                key={itemI}
-                className="flex-1 flex flex-col md:flex-row max-w-max gap-x-2 items-center text-center text-white/60"
-              >
-                {/* title */}
-                <div className="font-light mb-2 md:mb-0">{item.title}</div>
-                <div className="hidden md:flex">-</div>
-                <div>{item.stage}</div>
-
-                <div className="flex gap-x-4">
-                  {/* icons */}
-                  {item.icons?.map((Icon, iconI) => (
-                    <div key={iconI} className="text-2xl text-white">
-                      <Icon />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
+          <EducationTimeline />
         </motion.div>
       </div>
     </div>
