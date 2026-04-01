@@ -29,18 +29,26 @@ const Home = () => {
         <ParticlesContainer variant="home" />
       </div>
 
-      {/* Old red hero visual background */}
-      <div className="pointer-events-none absolute bottom-0 right-0 z-[2] h-full w-[1280px]">
-        <div
-          role="img"
-          aria-hidden
-          className="translate-z-0 absolute h-full w-full bg-red-950/60 xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat xl:mix-blend-color-dodge"
-        />
-      </div>
+      <motion.div
+        aria-hidden
+        animate={{ x: [0, -20, 0], y: [0, 14, 0], opacity: [0.12, 0.26, 0.12] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute -right-20 bottom-10 z-[2] h-[280px] w-[280px] rounded-full bg-red-900/25 blur-[120px] sm:h-[340px] sm:w-[340px]"
+      />
 
       {/* text */}
-      <div className="relative z-10 h-full w-full bg-gradient-to-r from-black/25 via-black/50 to-black/25">
+      <div className="relative z-10 h-full w-full bg-transparent">
         <div className="container mx-auto flex h-full min-h-[min(78dvh,760px)] flex-col justify-center px-5 py-8 text-center sm:min-h-[min(80dvh,820px)] sm:px-8 sm:py-10 md:px-10 md:py-12 xl:pt-40 xl:text-left">
+          <motion.p
+            variants={fadeIn("down", 0.12)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="mx-auto mb-5 inline-flex w-fit items-center rounded-full border border-red-400/30 bg-red-500/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-red-100/90 xl:mx-0"
+          >
+            Open to work
+          </motion.p>
+
           <motion.h1
             variants={fadeIn("down", 0.2)}
             initial="hidden"
@@ -66,6 +74,14 @@ const Home = () => {
             web applications and innovative solutions. I have completed over 70
             projects and bring 3+ years of experience to the table.
           </motion.p>
+
+          <motion.div
+            variants={fadeIn("down", 0.34)}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="mx-auto mb-8 h-[2px] w-28 bg-gradient-to-r from-transparent via-red-500/70 to-transparent xl:mx-0"
+          />
 
           <div className="relative flex justify-center xl:hidden">
             <ProjectsBtn />
