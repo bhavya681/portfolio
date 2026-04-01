@@ -51,7 +51,7 @@ const Nav = () => {
       className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center xl:inset-x-auto xl:bottom-auto xl:left-auto xl:right-[1.25%] xl:top-0 xl:h-screen xl:w-[3.75rem] xl:max-w-none xl:items-center 2xl:right-[1.75%]"
     >
       <div
-        className="pointer-events-auto flex h-[4.25rem] w-full max-w-none items-center justify-evenly gap-0 border-t border-white/[0.12] bg-[#0a0a12]/75 px-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-2 shadow-[0_-16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:h-[4.5rem] sm:px-3 md:px-8 xl:h-auto xl:w-full xl:flex-col xl:justify-center xl:gap-7 xl:rounded-full xl:border xl:border-white/[0.12] xl:bg-[#080810]/80 xl:px-2 xl:py-11 xl:shadow-[0_12px_48px_rgba(0,0,0,0.75)] xl:backdrop-blur-2xl"
+        className="pointer-events-auto flex h-[4.25rem] w-full max-w-none items-center justify-evenly gap-0 border-t border-white/[0.14] bg-[#1a1c22]/88 px-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-2 shadow-[0_-16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:h-[4.5rem] sm:px-3 md:px-8 xl:h-auto xl:w-full xl:flex-col xl:justify-center xl:gap-7 xl:rounded-full xl:border xl:border-white/[0.14] xl:bg-[#181a20]/90 xl:px-2 xl:py-11 xl:shadow-[0_12px_48px_rgba(0,0,0,0.75)] xl:backdrop-blur-2xl"
       >
         {navData.map((link) => {
           const active = navPathMatches(link.path, pathname, asPath);
@@ -61,19 +61,19 @@ const Nav = () => {
               href={link.path}
               className={`group relative flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl text-[1.2rem] transition-colors duration-200 ease-out sm:text-[1.3rem] xl:text-[1.22rem] ${
                 active
-                  ? "text-accent drop-shadow-[0_0_14px_rgba(241,48,36,0.75)]"
-                  : "text-white/90 hover:text-accent"
-              } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent active:scale-95`}
+                  ? "text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.28)]"
+                  : "text-white/65 hover:text-white/95"
+              } focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/60 active:scale-95`}
               aria-current={active ? "page" : undefined}
             >
               <span
                 role="tooltip"
                 className="pointer-events-none absolute right-full z-10 mr-2 hidden pr-1 xl:group-hover:flex"
               >
-                <span className="relative flex items-center rounded bg-white px-2.5 py-1.5 text-[11px] font-semibold capitalize leading-none text-[#05050a] shadow-lg">
+                <span className="relative flex items-center rounded bg-[#2b2d36] px-2.5 py-1.5 text-[11px] font-semibold capitalize leading-none text-white/95 shadow-lg">
                   {link.name}
                   <span
-                    className="absolute -right-1.5 top-1/2 -translate-y-1/2 border-y-[6px] border-l-8 border-r-0 border-solid border-y-transparent border-l-white"
+                    className="absolute -right-1.5 top-1/2 -translate-y-1/2 border-y-[6px] border-l-8 border-r-0 border-solid border-y-transparent border-l-[#2b2d36]"
                     aria-hidden
                   />
                 </span>
