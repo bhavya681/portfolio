@@ -22,18 +22,19 @@ const ParticlesContainer = ({ variant = "default" }) => {
         fullScreen: { enable: false },
         background: {
           color: {
-            value: "#000000",
+            value: "transparent",
           },
         },
         fpsLimit: 120,
         interactivity: {
+          detectsOn: "window",
           events: {
             onClick: {
-              enable: false,
+              enable: isHome,
               mode: "push",
             },
             onHover: {
-              enable: !isHome,
+              enable: true,
               mode: "repulse",
             },
             resize: true,

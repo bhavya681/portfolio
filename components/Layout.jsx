@@ -52,6 +52,9 @@ const Layout = ({ children }) => {
   const touchLockElRef = useRef(null);
 
   useEffect(() => {
+    const desktopQuery = window.matchMedia("(min-width: 1280px)");
+    if (!desktopQuery.matches) return;
+
     const handleScroll = (e) => {
       if (isScrolling.current) return;
       if (shouldSkipRouteFromWheel(e)) return;
@@ -152,10 +155,12 @@ const Layout = ({ children }) => {
 
       {router.pathname !== "/" ? <TopLeftImg /> : null}
       <Nav />
-      <Header />
+      <div className="hidden xl:block">
+        <Header />
+      </div>
 
-      {/* Fills viewport; padding reserves space for fixed bottom nav + safe area (mobile / tablet) */}
-      <div className="flex w-full min-h-0 flex-1 flex-col pb-[calc(6.25rem+env(safe-area-inset-bottom,0px))] xl:pb-0">
+      {/* Mobile/tablet: regular scroll flow. Desktop: full-page section layout. */}
+      <div className="flex w-full min-h-0 flex-1 flex-col pt-[calc(4.75rem+env(safe-area-inset-top,0px))] pb-4 sm:pt-[calc(5.1rem+env(safe-area-inset-top,0px))] xl:pt-0 xl:pb-0">
         {children}
       </div>
     </main>

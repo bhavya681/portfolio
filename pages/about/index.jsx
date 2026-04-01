@@ -20,7 +20,7 @@ const About = () => {
   }, [router.isReady, router.asPath]);
 
   return (
-    <div className="relative flex min-h-0 w-full flex-1 overflow-hidden bg-[#060606] py-20 text-center sm:py-24 md:py-28 xl:py-36 xl:text-left">
+    <div className="relative flex min-h-0 w-full flex-1 overflow-x-hidden overflow-y-auto bg-[#060606] py-10 text-center sm:py-14 md:py-20 xl:overflow-hidden xl:py-36 xl:text-left">
       {/* Quiet depth — single mesh, low contrast */}
       <div
         className="pointer-events-none absolute inset-0 mesh-page opacity-[0.22] mix-blend-screen"

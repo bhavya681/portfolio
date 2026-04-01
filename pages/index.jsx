@@ -1,86 +1,89 @@
 import { motion } from "framer-motion";
 
-import HomeSplatter from "../components/HomeSplatter";
 import ParticlesContainer from "../components/ParticlesContainer";
 import ProjectsBtn from "../components/ProjectsBtn";
 import { fadeIn } from "../variants";
 
 const Home = () => {
   return (
-    <div className="relative h-full min-h-[100dvh] w-full overflow-hidden bg-[#05050a] xl:min-h-0">
-      {/* Gold constellation */}
-      <div className="pointer-events-none absolute inset-0 z-[1] min-h-[100dvh]">
+    <div className="relative h-full overflow-hidden bg-black">
+      <div
+        className="pointer-events-none absolute inset-0 z-[1] bg-[radial-gradient(ellipse_110%_75%_at_8%_6%,rgba(241,48,36,0.22)_0%,rgba(241,48,36,0.08)_28%,transparent_60%),radial-gradient(ellipse_80%_55%_at_88%_72%,rgba(241,48,36,0.12)_0%,transparent_56%)] mix-blend-screen"
+        aria-hidden
+      />
+
+      <motion.div
+        aria-hidden
+        animate={{ x: [0, 14, 0], y: [0, -10, 0], opacity: [0.28, 0.42, 0.28] }}
+        transition={{ duration: 7.5, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute -left-20 -top-20 z-[2] h-[300px] w-[300px] rounded-full bg-accent/30 blur-[120px] sm:h-[360px] sm:w-[360px]"
+      />
+      <motion.div
+        aria-hidden
+        animate={{ scale: [1, 1.07, 1], opacity: [0.2, 0.38, 0.2] }}
+        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute left-[8%] top-[6%] z-[2] h-44 w-44 rounded-full border border-red-500/35"
+      />
+
+      <div className="pointer-events-none absolute inset-0 z-[50]">
         <ParticlesContainer variant="home" />
       </div>
 
-      <HomeSplatter />
-
-      {/* Deep navy wash for reference tone */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_120%_80%_at_70%_50%,rgba(15,23,42,0.35)_0%,transparent_55%)]"
-      />
-
-      {/* Right: portal / explosion */}
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[36%] z-[2] sm:top-[34%] md:top-[30%] xl:inset-y-0 xl:left-[28%] xl:right-0 xl:top-0">
+      {/* Old red hero visual background */}
+      <div className="pointer-events-none absolute bottom-0 right-0 z-[2] h-full w-[1280px]">
         <div
           role="img"
           aria-hidden
-          className="absolute inset-0 bg-none opacity-45 mix-blend-normal sm:opacity-50 xl:bg-explosion xl:bg-cover xl:bg-[center_right] xl:bg-no-repeat xl:mix-blend-screen xl:opacity-[0.52]"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-t from-[#05050a] via-black/70 to-[#05050a] xl:bg-gradient-to-l xl:from-[#05050a] xl:via-black/50 xl:to-black/15"
+          className="translate-z-0 absolute h-full w-full bg-red-950/60 xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat xl:mix-blend-color-dodge"
         />
       </div>
 
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 z-[3] bg-gradient-to-b from-black/50 via-transparent to-[#05050a] xl:bg-gradient-to-r xl:from-[#05050a]/95 xl:via-black/30 xl:to-transparent"
-      />
-
-      <div className="relative z-10 flex min-h-[min(100dvh,900px)] w-full xl:min-h-0 xl:h-full">
-        <div className="container flex min-h-[inherit] max-w-6xl flex-col justify-center px-5 py-12 text-center sm:px-8 sm:py-16 md:px-10 md:py-20 xl:h-full xl:min-h-0 xl:justify-center xl:py-0 xl:pl-12 xl:pr-8 xl:pt-24 xl:pb-16 xl:text-left">
+      {/* text */}
+      <div className="relative z-10 h-full w-full bg-gradient-to-r from-black/25 via-black/50 to-black/25">
+        <div className="container mx-auto flex h-full min-h-[min(78dvh,760px)] flex-col justify-center px-5 py-8 text-center sm:min-h-[min(80dvh,820px)] sm:px-8 sm:py-10 md:px-10 md:py-12 xl:pt-40 xl:text-left">
           <motion.h1
-            variants={fadeIn("down", 0.12)}
+            variants={fadeIn("down", 0.2)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="font-extrabold tracking-tight text-white"
+            whileHover={{ y: -2 }}
+            className="h1 will-change-transform"
           >
-            <span className="block text-[1.9rem] leading-[1.1] sm:text-[2.5rem] md:text-[3rem] lg:text-[3.35rem] xl:text-[3.65rem] xl:leading-[1.08]">
-              Hi, I&apos;m Bhavya
-            </span>
-            <span className="mt-4 block text-[1.35rem] font-bold leading-tight sm:mt-5 sm:text-2xl md:text-3xl md:leading-snug lg:text-4xl xl:mt-6 xl:text-[2.65rem] xl:leading-tight">
-              <span className="text-white">A </span>
-              <span className="text-accent drop-shadow-[0_0_32px_rgba(255,51,51,0.45)]">
-                Software Developer
-              </span>
-            </span>
+            Hi, I&apos;m Bhavya <br />
+            <span className="text-accent">A Software Developer</span>
           </motion.h1>
 
           <motion.p
-            variants={fadeIn("down", 0.22)}
+            variants={fadeIn("down", 0.3)}
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="mx-auto mt-8 max-w-[min(100%,36rem)] text-[15px] leading-[1.85] text-white/78 sm:mt-9 sm:text-base md:mt-10 md:text-lg xl:mx-0 xl:max-w-[26rem] xl:text-white/75"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.6 }}
+            className="mx-auto mb-10 max-w-sm xl:mx-0 xl:mb-16 xl:max-w-xl"
           >
             I am a passionate developer with expertise in creating user-friendly
             web applications and innovative solutions. I have completed over 70
             projects and bring 3+ years of experience to the table.
           </motion.p>
 
+          <div className="relative flex justify-center xl:hidden">
+            <ProjectsBtn />
+          </div>
+
           <motion.div
-            variants={fadeIn("down", 0.3)}
+            variants={fadeIn("down", 0.4)}
             initial="hidden"
             animate="show"
-            className="relative mt-11 flex justify-center sm:mt-12 xl:mt-14 xl:justify-start"
+            exit="hidden"
+            whileHover={{ x: 6 }}
+            className="hidden xl:flex"
           >
             <ProjectsBtn />
           </motion.div>
         </div>
       </div>
+
     </div>
   );
 };

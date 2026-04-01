@@ -192,7 +192,7 @@ const SkillsHexGrid = () => {
   const items = allTechItems;
 
   return (
-    <div className="relative flex h-full min-h-0 w-full flex-1 flex-col overflow-hidden px-3 py-3 sm:px-8 sm:py-4 md:px-10 md:py-5">
+    <div className="relative flex h-full min-h-0 w-full flex-1 flex-col overflow-x-hidden overflow-y-auto px-3 py-4 sm:px-8 sm:py-5 md:px-10 md:py-6 xl:overflow-hidden">
       <AmbientBubbles reduceMotion={reduceMotion} />
 
       <div
@@ -210,7 +210,7 @@ const SkillsHexGrid = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.35 }}
-        className="relative z-[1] flex min-h-0 w-full max-w-[min(100%,58rem)] flex-1 list-none flex-wrap content-center items-center justify-center gap-x-[0.75rem] gap-y-[clamp(0.9rem,3vmin,1.75rem)] overflow-hidden py-1 sm:mx-auto sm:gap-x-9 sm:gap-y-10 md:gap-x-10 md:gap-y-11"
+        className="relative z-[1] flex min-h-0 w-full max-w-[min(100%,58rem)] flex-1 list-none flex-wrap content-start items-center justify-center gap-x-[0.75rem] gap-y-[clamp(0.9rem,3vmin,1.75rem)] overflow-visible py-2 sm:mx-auto sm:content-center sm:gap-x-9 sm:gap-y-10 md:gap-x-10 md:gap-y-11"
       >
         {items.map((item, index) => (
           <li

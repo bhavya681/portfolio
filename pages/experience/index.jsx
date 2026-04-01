@@ -8,7 +8,7 @@ import { fadeIn } from "../../variants";
 
 const Experience = () => {
   return (
-    <div className="relative min-h-full w-full overflow-x-hidden overflow-y-auto bg-primary/30 py-20 sm:py-24 md:py-28 xl:h-full xl:overflow-hidden xl:py-32">
+    <div className="relative min-h-full w-full overflow-x-hidden overflow-y-auto bg-primary/30 py-10 sm:py-14 md:py-20 xl:h-full xl:overflow-hidden xl:py-32">
       <div className="pointer-events-none absolute inset-0 mesh-page opacity-60 mix-blend-screen" aria-hidden />
       
       {/* Ambient Glows */}

@@ -21,6 +21,7 @@
 @layer base {
   body {
     @apply bg-secondary overflow-x-hidden leading-relaxed;
+    scroll-behavior: smooth;
   }
   .page {
     @apply w-full min-h-screen h-screen overflow-x-hidden overflow-y-auto xl:overflow-hidden;

@@ -8,7 +8,7 @@ import { fadeIn } from "../../variants";
  */
 const Skills = () => {
   return (
-    <div className="relative flex min-h-0 w-full flex-1 flex-col overflow-hidden bg-[#020203]">
+    <div className="relative flex min-h-0 w-full flex-1 flex-col overflow-x-hidden overflow-y-auto bg-[#020203] xl:overflow-hidden">
       <div
         className="pointer-events-none absolute inset-0 mesh-page opacity-[0.06]"
         aria-hidden

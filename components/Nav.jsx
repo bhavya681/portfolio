@@ -48,10 +48,10 @@ const Nav = () => {
   return (
     <nav
       aria-label="Primary"
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-50 flex justify-center xl:inset-x-auto xl:bottom-auto xl:left-auto xl:right-[1.25%] xl:top-0 xl:h-screen xl:w-[3.75rem] xl:max-w-none xl:items-center 2xl:right-[1.75%]"
+      className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center xl:inset-x-auto xl:bottom-auto xl:left-auto xl:right-[1.25%] xl:top-0 xl:h-screen xl:w-[3.75rem] xl:max-w-none xl:items-center 2xl:right-[1.75%]"
     >
       <div
-        className="pointer-events-auto flex h-[4.25rem] w-full max-w-none items-center justify-evenly gap-0 border-t border-white/[0.14] bg-[#1a1c22]/88 px-1.5 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pt-2 shadow-[0_-16px_48px_rgba(0,0,0,0.65)] backdrop-blur-xl sm:h-[4.5rem] sm:px-3 md:px-8 xl:h-auto xl:w-full xl:flex-col xl:justify-center xl:gap-7 xl:rounded-full xl:border xl:border-white/[0.14] xl:bg-[#181a20]/90 xl:px-2 xl:py-11 xl:shadow-[0_12px_48px_rgba(0,0,0,0.75)] xl:backdrop-blur-2xl"
+        className="pointer-events-auto flex h-[4.1rem] w-full max-w-none items-center justify-around gap-0 overflow-x-auto border-b border-white/[0.14] bg-[#1a1c22]/88 px-1 pb-1.5 pt-[max(0.45rem,env(safe-area-inset-top,0px))] shadow-[0_16px_48px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:h-[4.5rem] sm:justify-evenly sm:px-3 sm:pb-2 md:px-8 xl:h-auto xl:w-full xl:flex-col xl:justify-center xl:gap-7 xl:overflow-visible xl:rounded-full xl:border xl:border-white/[0.14] xl:bg-[#181a20]/90 xl:px-2 xl:py-11 xl:shadow-[0_12px_48px_rgba(0,0,0,0.75)] xl:backdrop-blur-2xl"
       >
         {navData.map((link) => {
           const active = navPathMatches(link.path, pathname, asPath);
@@ -59,7 +59,7 @@ const Nav = () => {
             <Link
               key={`${link.path}-${link.name}`}
               href={link.path}
-              className={`group relative flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-xl text-[1.2rem] transition-colors duration-200 ease-out sm:text-[1.3rem] xl:text-[1.22rem] ${
+              className={`group relative flex min-h-[42px] min-w-[42px] shrink-0 items-center justify-center rounded-xl text-[1.1rem] transition-colors duration-200 ease-out sm:min-h-[44px] sm:min-w-[44px] sm:text-[1.3rem] xl:text-[1.22rem] ${
                 active
                   ? "text-white drop-shadow-[0_0_12px_rgba(255,255,255,0.28)]"
                   : "text-white/65 hover:text-white/95"
