@@ -7,7 +7,7 @@ import { fadeIn } from "../variants";
 
 const Home = () => {
   return (
-    <div className="relative h-full min-h-[100dvh] w-full overflow-x-hidden overflow-y-auto bg-[#05050a] xl:min-h-0 xl:overflow-hidden">
+    <div className="relative h-full min-h-[100dvh] w-full overflow-hidden bg-[#05050a] xl:min-h-0">
       {/* Gold constellation */}
       <div className="pointer-events-none absolute inset-0 z-[1] min-h-[100dvh]">
         <ParticlesContainer variant="home" />
