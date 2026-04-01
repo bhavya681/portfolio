@@ -4,6 +4,39 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import { allTechItems } from "./TechStack";
 
+const TECH_LINKS = {
+  HTML5: "https://developer.mozilla.org/en-US/docs/Web/HTML",
+  CSS3: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+  JavaScript: "https://developer.mozilla.org/en-US/docs/Web/JavaScript",
+  TypeScript: "https://www.typescriptlang.org/",
+  React: "https://react.dev/",
+  "Next.js": "https://nextjs.org/",
+  "Redux Toolkit": "https://redux-toolkit.js.org/",
+  Tailwind: "https://tailwindcss.com/",
+  Bootstrap: "https://getbootstrap.com/",
+  "Node.js": "https://nodejs.org/",
+  Express: "https://expressjs.com/",
+  "REST APIs": "https://restfulapi.net/",
+  MongoDB: "https://www.mongodb.com/",
+  PostgreSQL: "https://www.postgresql.org/",
+  "Socket.io": "https://socket.io/",
+  Axios: "https://axios-http.com/",
+  "Framer Motion": "https://www.framer.com/motion/",
+  Figma: "https://www.figma.com/",
+  JWT: "https://jwt.io/",
+  Git: "https://git-scm.com/",
+  GitHub: "https://github.com/",
+  Vercel: "https://vercel.com/",
+  Netlify: "https://www.netlify.com/",
+  Docker: "https://www.docker.com/",
+  Firebase: "https://firebase.google.com/",
+  Postman: "https://www.postman.com/",
+  Jira: "https://www.atlassian.com/software/jira",
+  Slack: "https://slack.com/",
+  "OWASP / App sec": "https://owasp.org/",
+  Stripe: "https://stripe.com/",
+};
+
 function mixOffset(index) {
   const x = (((index * 47) % 21) - 10) * 0.55;
   const y = (((index * 31) % 17) - 8) * 0.55;
@@ -61,6 +94,7 @@ function AmbientBubbles({ reduceMotion }) {
 
 function SkillIcon({ item, index, reduceMotion }) {
   const { x, y } = mixOffset(index);
+  const link = TECH_LINKS[item.name];
   const phase = index * 0.14;
   const floatDur = reduceMotion ? 0 : 2.6 + (index % 5) * 0.32;
   const breatheDur = reduceMotion ? 0 : 4.2 + (index % 6) * 0.55;
@@ -71,7 +105,13 @@ function SkillIcon({ item, index, reduceMotion }) {
       style={{ transform: `translate(${x}px, ${y}px)` }}
       className="flex flex-col items-center justify-center"
     >
-      <motion.div
+      <motion.a
+        href={link || "#"}
+        target={link ? "_blank" : undefined}
+        rel={link ? "noreferrer noopener" : undefined}
+        onClick={(e) => {
+          if (!link) e.preventDefault();
+        }}
         initial={{ opacity: 0, scale: 0.65, filter: "blur(6px)" }}
         animate={{
           opacity: reduceMotion ? 1 : [0.58, 1, 0.62, 0.94, 0.58],
@@ -115,15 +155,20 @@ function SkillIcon({ item, index, reduceMotion }) {
         }}
         whileHover={
           reduceMotion
-            ? { scale: 1.1, opacity: 1 }
+            ? { scale: 1.06, opacity: 1 }
             : {
-                scale: 1.2,
+                scale: 1.12,
                 opacity: 1,
                 rotate: 0,
                 transition: { type: "spring", stiffness: 420, damping: 16 },
               }
         }
-        className="group relative z-[1] flex cursor-default flex-col items-center justify-center"
+        className={`group relative z-[1] flex flex-col items-center justify-center ${
+          link ? "cursor-pointer" : "cursor-default"
+        }`}
+        aria-label={
+          link ? `${item.name} official website` : `${item.name} icon`
+        }
       >
         <span className="sr-only">{item.name}</span>
         <span
@@ -137,7 +182,7 @@ function SkillIcon({ item, index, reduceMotion }) {
         <span className="pointer-events-none absolute top-full z-[2] mt-2 max-w-[9rem] -translate-x-1/2 left-1/2 whitespace-normal rounded-md bg-black/85 px-2 py-1 text-center text-[10px] font-medium leading-tight text-white/95 opacity-0 shadow-lg backdrop-blur-sm transition duration-200 group-hover:opacity-100 sm:text-[11px]">
           {item.name}
         </span>
-      </motion.div>
+      </motion.a>
     </div>
   );
 }
